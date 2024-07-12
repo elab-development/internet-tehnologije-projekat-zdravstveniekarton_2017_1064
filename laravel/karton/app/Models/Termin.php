@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Termin extends Model
 {
@@ -19,5 +20,10 @@ class Termin extends Model
 
     function sestra(){
         return $this->belongsTo(Sestra::class);
+    }
+
+   //treba li i ovo?
+    function pregled(){
+        return $this->hasOne(Pregled::class);
     }
 }

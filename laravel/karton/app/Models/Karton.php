@@ -13,13 +13,13 @@ class Karton extends Model
         'alergije'
     ];
 
-    function pacijent(){
+    public function pacijent(){
         return $this->belongsTo(Pacijent::class);
     }
     
-    function pregledi(){
-        return $this->hasMany(Pregled::class);
-    }
+     public function pregledi(){
+       return $this->hasMany(Pregled::class);
+     }
 
    
 }

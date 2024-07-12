@@ -11,11 +11,13 @@ class Pacijent extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $guarded =[];
+
     protected $fillable = [
         'ime',
         'email',      
         'lozinka',
-        'datum rodjenja',
+        'datum_rodjenja',
         'telefon'
     ];
 
@@ -28,5 +30,10 @@ class Pacijent extends Model
       // 'email_verified_at' => 'datetime',
         'lozinka' => 'hashed'
     ];
+
+    function karton(){
+        return $this->hasOne(Karton::class);
+    }
+
 
 }

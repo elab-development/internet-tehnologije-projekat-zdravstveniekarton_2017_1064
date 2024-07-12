@@ -13,7 +13,7 @@ class Lekar extends Model
         'ime',
         'email',
         'lozinka',
-        'datum rodjenja',
+        'datum_rodjenja',
         'telefon',
         'specijalizacija'
     ];
