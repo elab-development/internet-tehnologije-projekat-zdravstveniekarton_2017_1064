@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PacijentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route::get('api/pacijenti', [PacijentController::class, 'index']);
+//Route::get('api/pacijenti/{id}', [PacijentController::class, 'show']);

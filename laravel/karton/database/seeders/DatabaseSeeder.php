@@ -45,9 +45,9 @@ class DatabaseSeeder extends Seeder
                 'specijalizacija' => "Opsta praksa" ]);
 
         $lekar2 = Lekar::create(['ime' => "Dusan Micic" , 
-                'email' => "", 'lozinka' => "" ,
-                'datum_rodjenja' => "", 'telefon' => "",
-                'specijalizacija' => "Endokrinollog" ]);
+                'email' => "dusanmicic@gmail.com", 'lozinka' => "dusan123" ,
+                'datum_rodjenja' => "10.02.1968", 'telefon' => "2134568",
+                'specijalizacija' => "Endokrinolog" ]);
 
         $sestra1 = Sestra::create(['ime' => "Dragica Pejin" , 
                 'email' => "dragicapejin@yahoo.com", 'lozinka' => "dragica123" ,
