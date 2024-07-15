@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\KartonController;
 use App\Http\Controllers\KartonPregledController;
 use App\Http\Controllers\LekarController;
@@ -39,3 +40,6 @@ Route::resource('pregledi', PregledController::class);
 
 //http://127.0.0.1:8000/api/kartoni/2/pregledi :
 Route::get('kartoni/{id}/pregledi', [KartonPregledController::class, 'index'])->name('kartoni.pregledi.index');
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
