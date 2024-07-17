@@ -7,6 +7,8 @@ use App\Http\Resources\PacijentResource;
 use App\Models\Pacijent;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class PacijentController extends Controller
 {
@@ -26,20 +28,34 @@ class PacijentController extends Controller
      */
     public function create($ime, $email, $lozinka, $datum_rodjenja, $telefon)
     {
-        // $pacijent = Pacijent::create([  'ime'=>$ime,
-        //                                 'email'=>$email,
-        //                                 'lozinka'=>$lozinka,
-        //                                 'datum_rodjenja'=>$datum_rodjenja,
-        //                                 'telefon'=>$telefon]);
-
-        // $pacijent->save();
+        //
     }
     /**
      * Store a newly created resource in storage.
      */
+    //post request cuvanje u bazi
     public function store(Request $request)
     {
-        //
+       
+        $validator = Validator::make($request->all(),[
+            'ime'=>'required|string|max:255',
+            'email'=>'required|string|email',
+            'lozinka'=>'required|string|min:6',
+            'datum_rodjenja'=>'required|string',
+            'telefon'=>'required|string' 
+        ]); 
+
+        if($validator->fails())
+        return response()->json($validator->errors());
+
+        $pacijent = Pacijent::create([  'ime'=>$request->ime,
+                                        'email'=>$request->email,
+                                        'lozinka'=>Hash::make($request->lozinka),
+                                        'datum_rodjenja'=>$request->datum_rodjenja,
+                                        'telefon'=>$request->telefon]);
+
+       return response()->json(['Pacijent je kreiran uspesno.', new PacijentResource($pacijent) ]);
+        
     }
 
     /**
@@ -68,7 +84,27 @@ class PacijentController extends Controller
      */
     public function update(Request $request, Pacijent $pacijent)
     {
-        //
+        // $validator = Validator::make($request->all(),[
+        //     'ime'=>'required|string|max:255',
+        //     'email'=>'required|string|email',
+        //     'lozinka'=>'required|string|min:6',
+        //     'datum_rodjenja'=>'required|string',
+        //     'telefon'=>'required|string' 
+        // ]); 
+
+        // if($validator->fails())
+        // return response()->json($validator->errors());
+
+        // $pacijent->ime= $request->ime;
+        // $pacijent->email= $request->email;
+        // $pacijent->lozinka= $request->lozinka;
+        // $pacijent->datum_rodjenja= $request->datum_rodjenja;
+        // $pacijent->telefon= $request->telefon;
+
+        // $pacijent->save();
+
+        // return response()->json('Pacijent je uspesno azuriran.', new PacijentResource($pacijent));
+
     }
 
     /**
@@ -76,6 +112,8 @@ class PacijentController extends Controller
      */
     public function destroy(Pacijent $pacijent)
     {
-        //
+        // $pacijent->delete();
+
+        // return response()->json('Pacijent je obrisan');
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Resources\TerminCollection;
 use App\Http\Resources\TerminResource;
 use App\Models\Termin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TerminController extends Controller
 {
@@ -31,7 +32,30 @@ class TerminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'datum'=>'required|string',
+            'vreme'=>'required|string',
+            'lekar_id'=>'required',
+            'sestra_id'=>'required'
+        ]);
+
+        if($validator->fails())
+        return response()->json($validator->errors());
+        
+      
+        try {
+           //puca kod pravljlenja termina
+        $termin = Termin::create([    'datum'=>$request->datum,
+            'vreme'=>$request->vreme,
+            'lekar_id'=>$request->lekar_id,
+            'sestra_id'=>$request->sestra_id,
+         ]);
+        } catch (\Throwable $th) {
+           return response($th->getMessage());
+        }
+        
+       
+        return response()->json(['Termin je kreiran uspesno.', new TerminResource($termin) ]);
     }
 
     /**

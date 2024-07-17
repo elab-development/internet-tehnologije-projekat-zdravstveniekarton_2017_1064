@@ -12,7 +12,9 @@ class Pregled extends Model
     protected $fillable = [
         'simptomi',
         'dijagnoza',
-        'terapija'
+        'terapija',
+        'termin_id',
+        'karton_id'
     ];
 
 

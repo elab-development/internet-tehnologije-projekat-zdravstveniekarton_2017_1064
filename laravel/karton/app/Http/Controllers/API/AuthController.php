@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Laravel\Sanctum\HasApiTokens;
-
+use PhpParser\Node\Stmt\Return_;
 
 class AuthController extends Controller
 {
@@ -19,7 +20,8 @@ class AuthController extends Controller
             'name'=>'required|string|max:255',
             // email ogranicenje proverava da l ima @ u sebi
             'email'=>'required|string|max:255|email|unique:users', 
-            'password'=>'required|string|min:6'
+            'password'=>'required|string|min:6',
+            'user_type'=>['required', Rule::in(['sestra','lekar','pacijent'])]
         ]);
 
         if($validator->fails())
@@ -29,7 +31,8 @@ class AuthController extends Controller
             'name'=>$request->name,
             'email'=>$request->email,
            // 'password'=>$request->password
-            'password'=>Hash::make($request->password)
+            'password'=>Hash::make($request->password),
+            'user_type'=>$request->user_type
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -47,5 +50,12 @@ class AuthController extends Controller
         
         return response()->json(['message'=> 'Pozdrav '.$user->name.', dobrodosli', 
             'access_token' => $token, 'token_type' => 'Bearer', ]);
+    }
+
+    function logout(){
+        auth()->user()->tokens()->delete(); //baca gresku za token ali ta funkcija postoji  
+        return[
+            'message' => 'Uspesno ste se izlogovali i token je uspesno obrisan.' 
+        ];
     }
 }

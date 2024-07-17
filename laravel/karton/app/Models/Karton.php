@@ -10,7 +10,8 @@ class Karton extends Model
     use HasFactory;
 
     protected $fillable=[
-        'alergije'
+        'alergije',
+        'pacijent_id'
     ];
 
     public function pacijent(){

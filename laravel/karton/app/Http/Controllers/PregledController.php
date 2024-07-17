@@ -6,6 +6,7 @@ use App\Http\Resources\PregledCollection;
 use App\Http\Resources\PregledResource;
 use App\Models\Pregled;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PregledController extends Controller
 {
@@ -31,7 +32,26 @@ class PregledController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'simptomi'=>'required|string|max:255',
+            'dijagnoza'=>'required|string',
+            'terapija'=>'required|string|max:255',
+            'termin_id'=>'required',
+            'karton_id'=>'required' 
+        ]); 
+
+        if($validator->fails())
+        return response()->json($validator->errors());
+
+        $pregled = Pregled::create([  
+            'simptomi'=>$request->simptomi,
+            'dijagnoza'=>$request->dijagnoza,
+            'terapija'=>$request->terapija,
+            'termin_id'=>$request->termin_id,
+            'karton_id'=>$request->karton_id
+        ]);
+
+        return response()->json(['Pregled je kreiran uspesno.', new PregledResource($pregled) ]);
     }
 
     /**

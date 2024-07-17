@@ -11,7 +11,9 @@ class Termin extends Model
     use HasFactory;
     protected $fillable=[
         'datum',
-        'vreme'
+        'vreme',
+        'lekar_id',
+        'sestra_id'
     ];
 
     function lekar(){

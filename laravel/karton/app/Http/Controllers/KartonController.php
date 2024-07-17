@@ -6,6 +6,7 @@ use App\Http\Resources\KartonCollection;
 use App\Http\Resources\KartonResource;
 use App\Models\Karton;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class KartonController extends Controller
 {
@@ -31,7 +32,20 @@ class KartonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'alergije' => 'required|string|max:255',
+            'pacijent_id' => 'required'
+        ]);
+
+        if($validator->fails())
+        return response()->json($validator->errors());
+
+        $karton = Karton::create([
+            'alergije'=>request()->alergije,
+            'pacijent_id'=>request()->pacijent_id
+         ]);
+      
+        return response()->json(['Karton je uspesno kreiran', new KartonResource($karton)]);
     }
 
     /**

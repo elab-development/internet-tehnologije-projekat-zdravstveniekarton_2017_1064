@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::truncate();
-        User::factory(2)->create();
+        User::factory(10) ->create();
        
         $pacijent1 = Pacijent::create(['ime'=>"Pera Peric",
                                         'email'=>"perap@yahoo.com",
@@ -41,14 +41,25 @@ class DatabaseSeeder extends Seeder
 
         $lekar1 = Lekar::create(['ime' => "Milena Stojic" , 
                 'email' => "milenas@yahoo.com", 'lozinka' => "milena123" ,
-                'datum_rodjenja' => "12.06.1984", 'telefon' => "06458971",
+                'datum_rodjenja' => "12.06.1984.", 'telefon' => "06458971",
                 'specijalizacija' => "Opsta praksa" ]);
 
         $lekar2 = Lekar::create(['ime' => "Dusan Micic" , 
                 'email' => "dusanmicic@gmail.com", 'lozinka' => "dusan123" ,
-                'datum_rodjenja' => "10.02.1968", 'telefon' => "2134568",
+                'datum_rodjenja' => "10.02.1968.", 'telefon' => "2134568",
                 'specijalizacija' => "Endokrinolog" ]);
 
+        $lekar3 = Lekar::create(['ime' => "Dusica Bursic" , 
+                'email' => "dusicabursic@gmail.com", 'lozinka' => "dusica123" ,
+                'datum_rodjenja' => "07.02.1986.", 'telefon' => "12569856",
+                'specijalizacija' => "Internista" ]);
+
+        $lekar4 = Lekar::create(['ime' => "Svetozar Jokic" , 
+                'email' => "svetozarjokic@gmail.com", 'lozinka' => "svetozar123" ,
+                'datum_rodjenja' => "31.08.1973.", 'telefon' => "7895620",
+                'specijalizacija' => "Opsta praksa" ]);
+
+        
         $sestra1 = Sestra::create(['ime' => "Dragica Pejin" , 
                 'email' => "dragicapejin@yahoo.com", 'lozinka' => "dragica123" ,
                 'datum_rodjenja' => "08.10.1975.", 'telefon' => "011215489" ]);
@@ -56,15 +67,23 @@ class DatabaseSeeder extends Seeder
         $sestra2 = Sestra::create(['ime' => "Jovana Bozovic" , 
                 'email' => "jokaboza@gmail.com", 'lozinka' => "jovanka123" ,
                 'datum_rodjenja' => "12.12.1973", 'telefon' => "1234565" ]);
+        
+        $sestra3 = Sestra::create(['ime' => "Smilja Grbic" , 
+                'email' => "smiljag@gmail.com", 'lozinka' => "smilja123" ,
+                'datum_rodjenja' => "12.10.1959", 'telefon' => "45029657" ]);
 
        
         $termin1 = Termin::create([ 'datum' => "18.07.2024", 'vreme' => "08:00",
-                'lekar_id' => 1 , 'sestra_id' => 2]);
+                'lekar_id' => 2 , 'sestra_id' => 2]);
 
         $termin2 = Termin::create([ 'datum' => "18.07.2024", 'vreme' => "08:30",
                 'lekar_id' => 1 , 'sestra_id' => 1]);
         $termin3 = Termin::create([ 'datum' => "18.07.2024", 'vreme' => "09:00",
                 'lekar_id' => 2 , 'sestra_id' => 2]);
+        
+        $termin4 = Termin::create([ 'datum' => "19.07.2024", 'vreme' => "12:00",
+                'lekar_id' => 4 , 'sestra_id' => 3]);
+        
 
 
         $pregled1 = Pregled::create(['simptomi' => "bol u grlu, kasalj, temperatura",
