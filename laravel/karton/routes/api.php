@@ -8,6 +8,7 @@ use App\Http\Controllers\PacijentController;
 use App\Http\Controllers\PregledController;
 use App\Http\Controllers\SestraController;
 use App\Http\Controllers\TerminController;
+use App\Http\Middleware\ProveriUloguMiddleware;
 use App\Http\Resources\PacijentResource;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
@@ -55,8 +56,8 @@ Route::group(['middleware'=>['auth:sanctum']], function(){
         return auth()->user();
     });
     
-  //?   if(auth()->user()->user_type == 'lekar'){   }
-    Route::resource('pacijenti', PacijentController::class)->only(['store']);
+    Route::post('/pacijenti', [PacijentController::class, 'store'])->middleware(ProveriUloguMiddleware::class);
+    
     Route::resource('termini', TerminController::class)->only(['store']);
     Route::resource('pregledi', PregledController::class)->only(['store']);
     Route::resource('kartoni', KartonController::class)->only(['store']);
