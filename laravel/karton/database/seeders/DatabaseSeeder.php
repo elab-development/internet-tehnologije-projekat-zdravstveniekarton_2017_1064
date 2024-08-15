@@ -26,13 +26,11 @@ class DatabaseSeeder extends Seeder
        
         $pacijent1 = Pacijent::create(['ime'=>"Pera Peric",
                                         'email'=>"perap@yahoo.com",
-                                        'lozinka'=>"pera123",
                                         'datum_rodjenja'=>"10.05.1996.",
                                          'telefon'=>"1234567"]);
         
         $pacijent2 = Pacijent::create(['ime'=>"Mira Lazic",
                                          'email'=>"miral@yahoo.com",
-                                         'lozinka'=>"mira123",
                                          'datum_rodjenja'=>"11.09.1996.",
                                          'telefon'=>"16574567"]);
       
@@ -40,36 +38,36 @@ class DatabaseSeeder extends Seeder
         $karton2 = Karton::create(['alergije'=>"penicilin", 'pacijent_id'=>2]);
 
         $lekar1 = Lekar::create(['ime' => "Milena Stojic" , 
-                'email' => "milenas@yahoo.com", 'lozinka' => "milena123" ,
+                'email' => "milenas@yahoo.com", 
                 'datum_rodjenja' => "12.06.1984.", 'telefon' => "06458971",
                 'specijalizacija' => "Opsta praksa" ]);
 
         $lekar2 = Lekar::create(['ime' => "Dusan Micic" , 
-                'email' => "dusanmicic@gmail.com", 'lozinka' => "dusan123" ,
+                'email' => "dusanmicic@gmail.com", 
                 'datum_rodjenja' => "10.02.1968.", 'telefon' => "2134568",
                 'specijalizacija' => "Endokrinolog" ]);
 
         $lekar3 = Lekar::create(['ime' => "Dusica Bursic" , 
-                'email' => "dusicabursic@gmail.com", 'lozinka' => "dusica123" ,
+                'email' => "dusicabursic@gmail.com", 
                 'datum_rodjenja' => "07.02.1986.", 'telefon' => "12569856",
                 'specijalizacija' => "Internista" ]);
 
         $lekar4 = Lekar::create(['ime' => "Svetozar Jokic" , 
-                'email' => "svetozarjokic@gmail.com", 'lozinka' => "svetozar123" ,
+                'email' => "svetozarjokic@gmail.com", 
                 'datum_rodjenja' => "31.08.1973.", 'telefon' => "7895620",
                 'specijalizacija' => "Opsta praksa" ]);
 
         
         $sestra1 = Sestra::create(['ime' => "Dragica Pejin" , 
-                'email' => "dragicapejin@yahoo.com", 'lozinka' => "dragica123" ,
+                'email' => "dragicapejin@yahoo.com", 
                 'datum_rodjenja' => "08.10.1975.", 'telefon' => "011215489" ]);
 
         $sestra2 = Sestra::create(['ime' => "Jovana Bozovic" , 
-                'email' => "jokaboza@gmail.com", 'lozinka' => "jovanka123" ,
+                'email' => "jokaboza@gmail.com", 
                 'datum_rodjenja' => "12.12.1973", 'telefon' => "1234565" ]);
         
         $sestra3 = Sestra::create(['ime' => "Smilja Grbic" , 
-                'email' => "smiljag@gmail.com", 'lozinka' => "smilja123" ,
+                'email' => "smiljag@gmail.com", 
                 'datum_rodjenja' => "12.10.1959", 'telefon' => "45029657" ]);
 
        

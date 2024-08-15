@@ -40,7 +40,6 @@ class PacijentController extends Controller
         $validator = Validator::make($request->all(),[
             'ime'=>'required|string|max:255',
             'email'=>'required|string|email',
-            'lozinka'=>'required|string|min:6',
             'datum_rodjenja'=>'required|string',
             'telefon'=>'required|string' 
         ]); 
@@ -50,7 +49,6 @@ class PacijentController extends Controller
 
         $pacijent = Pacijent::create([  'ime'=>$request->ime,
                                         'email'=>$request->email,
-                                        'lozinka'=>Hash::make($request->lozinka),
                                         'datum_rodjenja'=>$request->datum_rodjenja,
                                         'telefon'=>$request->telefon]);
 

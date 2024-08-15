@@ -57,10 +57,9 @@ Route::group(['middleware'=>['auth:sanctum']], function(){
     });
     
     Route::post('/pacijenti', [PacijentController::class, 'store'])->middleware(ProveriUloguMiddleware::class);
-    
-    Route::resource('termini', TerminController::class)->only(['store']);
-    Route::resource('pregledi', PregledController::class)->only(['store']);
-    Route::resource('kartoni', KartonController::class)->only(['store']);
+    Route::post('/termini', [TerminController::class, 'store'])->middleware(ProveriUloguMiddleware::class);
+    Route::post('/pregledi', [PregledController::class, 'store'])->middleware(ProveriUloguMiddleware::class);
+    Route::post('/kartoni', [KartonController::class, 'store'])->middleware(ProveriUloguMiddleware::class);
     
     //Route::post('/kartoni', [KartonController::class ,'store']);
     

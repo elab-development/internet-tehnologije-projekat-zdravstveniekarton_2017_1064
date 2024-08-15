@@ -14,17 +14,12 @@ class Sestra extends Model
     protected $fillable=[
         'ime',
         'email',      
-        'lozinka',
         'datum_rodjenja',
         'telefon'
     ];
 
-    protected $hidden=[
-        'lozinka'
-    ];
-    protected $casts=[
-        'lozinka' => 'hashed' 
-    ];
+    
+    
 
     function termini(){
         return $this->hasMany(Termin::class);

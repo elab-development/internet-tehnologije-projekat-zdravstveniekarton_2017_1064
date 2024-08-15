@@ -12,18 +12,12 @@ class Lekar extends Model
     protected $fillable=[
         'ime',
         'email',
-        'lozinka',
         'datum_rodjenja',
         'telefon',
         'specijalizacija'
     ];
 
-    protected $hidden=[
-        'lozinka'
-    ];
-    protected $casts=[
-        'lozinka' => 'hashed'
-    ];
+    
 
     function termini(){
         return $this->hasMany(Termin::class);

@@ -16,20 +16,11 @@ class Pacijent extends Model
     protected $fillable = [
         'ime',
         'email',      
-        'lozinka',
         'datum_rodjenja',
         'telefon'
     ];
 
-    protected $hidden =[
-        'lozinka'
-     //   'remember_token'
-        ];
-
-     protected $casts = [
-      // 'email_verified_at' => 'datetime',
-        'lozinka' => 'hashed'
-    ];
+    
 
     function karton(){
         return $this->hasOne(Karton::class);
