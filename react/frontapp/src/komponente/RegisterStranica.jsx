@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterStranica = () => {
     const [userData, setUserData] = useState({
@@ -9,6 +10,8 @@ const RegisterStranica = () => {
         password: "",
         user_type: ""
       });
+
+      let navigate = useNavigate(); 
     
       function handleInput(e) {
         //console.log(e) ;
@@ -23,10 +26,12 @@ const RegisterStranica = () => {
     
         axios.post("api/register", userData).then( (res) => {
           console.log(res.data);
+          navigate('/login');
         }).catch( (e) =>
            console.log(e));
       }
 
+     
   return (
     <section className="vh-100 gradient-custom">
     <div className="container-fluid py-5 h-100"> 
