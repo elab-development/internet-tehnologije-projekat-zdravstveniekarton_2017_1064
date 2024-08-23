@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Lekari from './komponente/Lekari';
+import LoginStranica from './komponente/LoginStranica';
+import NavBar from './komponente/NavBar';
+import Sestre from './komponente/Sestre';
+//moze i alijasi npr BrowserRouter as BRouter
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 function App() {
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter className="App">
+     <NavBar> </NavBar>
+     <Routes>
+     <Route path='/login' element = { <LoginStranica> </LoginStranica> } />  
+      <Route path='/lekari' element = { <Lekari> </Lekari> } />  
+      <Route path='/sestre' element={ <Sestre> </Sestre> }/>
+     </Routes>
+     
+    
+
+    </BrowserRouter>
   );
 }
 

@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+  */
+  .navBar {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(123, 180, 216);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(33, 62, 142);
+    align-items: center;
+    min-height: 40px;
+    padding-left: 25px;
+    font-size: large;
+  }
+
+  .card {
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(83, 0, 238);
+    border-radius: 10px;
+    max-width: 200px;
+    margin: 15px;
+  }
+  
+  .card-body {
+    margin: 10px;
+  }
+
+  .card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .all-osoblje {
+    display: flex;
+    margin: 20px;
+  }
+  
+  
+  
+  
+
+  
+
+  
+
