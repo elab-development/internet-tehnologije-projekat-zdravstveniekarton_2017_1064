@@ -5,13 +5,15 @@ import React from 'react'
 function Lekar({lekar}) {
   
   return (
-    <div className="card" > 
+
+      <div className="card">
         <img className='card-img-top' src="https:/picsum.photos/200" alt="Slika"  />
         <div className="card-body">
-            <h3 className='card-title'> {lekar.ime} </h3>   
-            <p className='card-text'> {lekar.info} </p>
+          <h5 className="card-title">{lekar.ime}</h5>
+          <h6 className="card-subtitle mb-2 text-muted">{lekar.specijalizacija}</h6>
+          <p className="card-text">{lekar.email}</p>
         </div>
-    </div>
+      </div>
 
   )
 }
