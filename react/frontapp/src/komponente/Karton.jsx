@@ -1,10 +1,10 @@
 import React from 'react'
 import PreglediKartona from './PreglediKartona'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 
  function Karton({karton}) {
-    
+  const location = useLocation();  
   return (
     <div className="cardKarton">
         <div className="cardKarton-header">
@@ -12,29 +12,38 @@ import { Link } from 'react-router-dom'
         </div>
         <div className="cardKarton-body">
             <h5 className="cardKarton-title">{karton.pacijent.ime} </h5>
-            <p className="cardKarton-text">
-                Alergije: {karton.alergije} <br/>
-                Datum rodjenja: {karton.pacijent.datum_rodjenja}
-            </p>
+        
+              {location.pathname == "/kartoni" && (
+                <a href={`/kartoni/${karton.id}`} className="btn btn-primary">
+                  Otvori karton
+                </a>
+              )}
 
-            
-              {/* <a href={`/kartoni/${karton.id}/pregledi`} className="btn btn-primary">Svi pregledi </a> */}
+
+              {location.pathname != "/kartoni" && (    
+                <div>
+                    <p className="cardKarton-text">
+                      Alergije: {karton.alergije} <br/>
+                      Datum rodjenja: {karton.pacijent.datum_rodjenja} <br/>
+                      Pacijent: <a href={`/pacijenti/${karton.pacijent.id}`} className="btn btn-secondary">
+                                    informacije
+                                </a>
+                    </p>
+
+                  <a href={`/kartoni/${karton.id}/pregledi`} className="btn btn-primary">
+                    Svi pregledi
+                  </a>
+
+                  <div className="card-footer text-muted">
+                    Email:{karton.pacijent.email} 
+                    <br/> Telefon: {karton.pacijent.telefon} 
+                  </div>
+
+                </div>
+              )}
               
-              <Link to={`/kartoni/${karton.id}/pregledi`} className="btn btn-primary">
-                Svi pregledi
-              </Link>
-              {/* <div>
-                <PreglediKartona karton ={karton} key={karton.id} />
-              </div> */}
-       
-           
-             
-
         </div>
-        <div className="card-footer text-muted">
-        Email:{karton.pacijent.email} 
-        <br/> Telefon: {karton.pacijent.telefon} 
-        </div>
+        
     </div>
   )
 }

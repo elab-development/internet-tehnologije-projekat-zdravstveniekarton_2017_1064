@@ -13,6 +13,7 @@ import Kartoni from './komponente/Kartoni';
 
 import Pregledi from './komponente/Pregledi';
 import PreglediKartona from './komponente/PreglediKartona';
+import Termini from './komponente/Termini';
 
 
 function App() {
@@ -28,12 +29,19 @@ function App() {
       <Route path='/login' element = { <LoginStranica addToken={addToken}  /> } />  
       <Route path='/register' element = {   <RegisterStranica/> } />
       <Route path='/' element = {<NavBar token={token} />} >
-        <Route path='lekari' element = { <Lekari> </Lekari> } />  
+        <Route path='lekari' element = { <Lekari> </Lekari> } /> 
+        <Route path='lekari/:id' element = { <Lekari> </Lekari> } /> 
         <Route path='sestre' element={ <Sestre> </Sestre> }/>
+        <Route path='sestre/:id' element={ <Sestre> </Sestre> }/>
         <Route path='pacijenti' element={ <Pacijenti/> }/>
+        <Route path='pacijenti/:id' element={ <Pacijenti/> }/>
         <Route path='kartoni' element={ <Kartoni/> }/>
-        <Route path='pregledi' element={ <Pregledi/> }/>
+        <Route path='kartoni/:id' element={ <Kartoni/> }/> 
         <Route path="/kartoni/:id/pregledi" element={<PreglediKartona />} />
+        <Route path='pregledi' element={ <Pregledi/> }/>
+        <Route path='pregledi/:id' element={ <Pregledi/> }/>
+        <Route path='termini' element={ <Termini/> }/>
+        <Route path='termini/:id' element={ <Termini/> }/>
 
 
       </Route>

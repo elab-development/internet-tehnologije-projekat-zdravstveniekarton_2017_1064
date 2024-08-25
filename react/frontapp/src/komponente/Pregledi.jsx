@@ -2,16 +2,21 @@ import React from 'react'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Pregled from './Pregled';
+import { useParams } from 'react-router-dom';
 
 const Pregledi = () => {
+    const {id} = useParams();
     const [pregledi, setPregledi ] = useState() ;
     
     //ako se nesto izmeni u komponenti (da se ucita samo jednom)
     useEffect( () => {
       if(pregledi == null ){
-        axios.get("api/pregledi").then((res) => {
+        axios.get(id? `api/pregledi/${id}` :"api/pregledi").then((res) => {
           console.log(res.data);
-          setPregledi(res.data.pregledi );
+          if(res.data.pregledi == null)
+            setPregledi([res.data.pregled]);
+          else
+            setPregledi(res.data.pregledi );
         });
       }
     } );

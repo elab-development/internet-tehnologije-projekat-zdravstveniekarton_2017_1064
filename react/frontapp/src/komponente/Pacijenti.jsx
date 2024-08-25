@@ -3,15 +3,21 @@ import React from 'react'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Pacijent from './Pacijent';
+import { useParams } from 'react-router-dom';
+
 
 const Pacijenti = () => {
-    const [pacijenti, setPacijenti ] = useState() ;
+  const {id} = useParams();
+  const [pacijenti, setPacijenti ] = useState() ;
   //ako se nesto izmeni u komponenti (da se ucita samo jednom)
   useEffect( () => {
     if(pacijenti == null ){
-      axios.get("api/pacijenti").then((res) => {
+      axios.get(id ? `api/pacijenti/${id}` : "api/pacijenti").then((res) => {
         console.log(res.data);
-        setPacijenti(res.data.pacijenti );
+        if(res.data.pacijenti == null)
+          setPacijenti([res.data.pacijent])
+        else
+          setPacijenti(res.data.pacijenti );
       });
     }
   } );

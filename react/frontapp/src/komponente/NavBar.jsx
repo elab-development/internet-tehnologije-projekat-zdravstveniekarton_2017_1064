@@ -75,7 +75,11 @@ function NavBar({token}) {
                 Pregledi
               </a>
             </li>
-
+            <li className="nav-item">
+              <a className="nav-link" href="/termini">
+                Termini
+              </a>
+            </li>
             
             
             <li className="nav-item">
