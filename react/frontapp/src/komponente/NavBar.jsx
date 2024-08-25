@@ -65,6 +65,16 @@ function NavBar({token}) {
                 Pacijenti
               </a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/kartoni">
+                Kartoni
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/pregledi">
+                Pregledi
+              </a>
+            </li>
 
             
             

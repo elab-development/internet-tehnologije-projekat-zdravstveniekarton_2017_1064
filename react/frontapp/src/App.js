@@ -9,6 +9,11 @@ import Sestre from './komponente/Sestre';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import { useState } from 'react';
 import Pacijenti from './komponente/Pacijenti';
+import Kartoni from './komponente/Kartoni';
+
+import Pregledi from './komponente/Pregledi';
+import PreglediKartona from './komponente/PreglediKartona';
+
 
 function App() {
  
@@ -16,6 +21,7 @@ function App() {
   function addToken(auth_token) {
     setToken(auth_token);  
   }
+  
   return (
     <BrowserRouter className="App">
      <Routes>
@@ -25,6 +31,11 @@ function App() {
         <Route path='lekari' element = { <Lekari> </Lekari> } />  
         <Route path='sestre' element={ <Sestre> </Sestre> }/>
         <Route path='pacijenti' element={ <Pacijenti/> }/>
+        <Route path='kartoni' element={ <Kartoni/> }/>
+        <Route path='pregledi' element={ <Pregledi/> }/>
+        <Route path="/kartoni/:id/pregledi" element={<PreglediKartona />} />
+
+
       </Route>
       
      </Routes>
