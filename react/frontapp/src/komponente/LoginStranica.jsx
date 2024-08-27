@@ -27,9 +27,10 @@ const LoginStranica = ({addToken}) => {
       console.log(res.data);
       if(res.data.success === true){
         window.sessionStorage.setItem("auth_token", res.data.access_token); 
-        addToken(res.data.access_token);
-        navigate('/');
+        window.sessionStorage.setItem("user_type", res.data.user_type); 
       }
+      addToken(res.data.access_token);
+      navigate('/');
     }).catch( (e) =>
        console.log(e));
   }

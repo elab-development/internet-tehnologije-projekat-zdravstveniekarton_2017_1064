@@ -1,0 +1,84 @@
+import React from 'react';
+import { useState } from 'react'; 
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
+
+
+const AddPacijent = () => {
+    
+    let navigate = useNavigate();
+
+    const [pacijentData, setPacijentData] = useState({
+      ime: "",
+      email: "",
+      datum_rodjenja: "",
+      telefon: "",
+      });
+      
+      function handleInput(e) {
+        //console.log(e) ;
+        let newPacijentData = pacijentData;
+        newPacijentData[e.target.name] = e.target.value;
+        //console.log(newPacijentData);
+        setPacijentData(newPacijentData);
+      }
+      if(window.sessionStorage.getItem("user_type") === 'pacijent' || 
+      window.sessionStorage.getItem("user_type") == null) {
+          return(
+              <div>
+                  Neautorizovan pristup. Mogu pristupiti samo lekari i sestre. <br/>
+                  Niste ulogovani?
+                  <a href="/login" 
+                  className="text-black-50 fw-bold">Ulogujte se</a>
+              </div>
+          )
+      }
+
+      function handleSubmit(e) {
+        e.preventDefault();  
+    
+        axios.post("api/pacijenti", pacijentData, {
+            headers: {
+                Authorization: `Bearer ${window.sessionStorage.getItem("auth_token")}`,
+              },
+        }).then( (res) => {
+
+           
+          console.log(res.data);
+          if(res.data[0] === "Pacijent je kreiran uspesno."){
+            navigate('/pacijenti')
+          }
+          
+        }).catch( (e) =>
+           console.log(e));
+      }
+  
+
+  return (
+    <div className="formaAdd">
+      <h2>Dodaj pacijenta</h2>
+      <form onSubmit={handleSubmit}>
+        <label>Ime:</label>
+        <input type="text" name = "ime"
+                    onInput={handleInput} placeholder='Ime prezime'/>
+        <br/>
+        <label>Email:</label>
+        <input type="email" name = "email"
+                    onInput={handleInput} placeholder='mail@example.com'/>
+        <br/>
+        <label>Datum rođenja:</label>
+        <input type="text" name = "datum_rodjenja"
+                    onInput={handleInput} placeholder='31.12.1999.'/>
+        <br/>
+        <label>Telefon:</label>
+        <input type="text" name = "telefon"
+                    onInput={handleInput} placeholder='1234567'/>
+        <br/>
+        <button type="submit">Dodaj pacijenta</button>
+      </form>
+    </div>
+  );
+}
+
+export default AddPacijent;

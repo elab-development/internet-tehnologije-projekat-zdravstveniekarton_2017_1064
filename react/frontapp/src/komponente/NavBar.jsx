@@ -4,26 +4,40 @@ import React from 'react'
 import  {Link} from "react-router-dom";
 import axios from 'axios';
 import { Outlet } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function NavBar({token}) {
-  function handleLogout() {
+const NavBar = ({token}) => {
+  
+  let navigate = useNavigate();
+
+  function handleLogout(e) {
+    e.preventDefault();
+    console.log("ovde pocinje logout")
     let config = {
-      method: 'post',
-      maxBodyLength: Infinity,
+      method: "post",
       url: 'api/logout',
-      headers: {  
-        Authorization : 'Bearer '+window.sessionStorage.getItem("auth_token")
-      }
+      headers: {
+         Authorization: "Bearer " + token,
+      },
     };
-    
-    axios.request(config)
-    .then((response) => {
-      console.log(JSON.stringify(response.data));
-      window.sessionStorage.setItem("auth_token", null);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    console.log("ovde pocinje axios")
+    console.log(config)
+
+    axios.request(config).then((response) => {
+      console.log(response)
+      if (response.status == 200) {
+        console.log(JSON.stringify(response.data));
+        window.sessionStorage.removeItem("auth_token");
+        window.sessionStorage.removeItem("user_type");
+        navigate("/login");
+      } else {
+        console.error("Logout failed");
+        // Handle the case where the logout fails
+      }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
@@ -60,20 +74,34 @@ function NavBar({token}) {
                 Sestre
               </a>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link" href="/pacijenti">
                 Pacijenti
               </a>
+            </li> */}
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Pacijenti
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><Link className="dropdown-item" to="/pacijenti">Lista pacijenata</Link></li>
+                <li><Link className="dropdown-item" to="/pacijenti/dodaj">Dodaj pacijenta</Link></li>
+              </ul>
             </li>
+
             <li className="nav-item">
               <a className="nav-link" href="/kartoni">
                 Kartoni
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/pregledi">
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Pregledi
               </a>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><Link className="dropdown-item" to="/pregledi">Lista pregleda</Link></li>
+                <li><Link className="dropdown-item" to="/pregledi/dodaj">Dodaj pregled</Link></li>
+              </ul>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/termini">
@@ -87,17 +115,18 @@ function NavBar({token}) {
                 Disabled
               </a>
             </li>
-            {token == null ?
-              <li className="nav-item">
+            
+            {(token == null) ? ( <li className="nav-item">
               <a className="nav-link" href="/login">
                 Login
               </a>
-              </li> :
-              <li className="nav-item">
+              </li> )
+              : (<li className="nav-item">
                 <a className="nav-link" href="/" onClick={handleLogout}>
                   Logout
                 </a>
-              </li>}
+              </li>)
+              }
             
           </ul>
 
