@@ -17,6 +17,8 @@ import Termini from './komponente/Termini';
 import AddPacijent from './komponente/AddPacijent';
 import AddPregled from './komponente/AddPregled';
 import IzvestajPregleda from './komponente/IzvestajPregleda';
+import AddKarton from './komponente/AddKarton';
+import AddTermin from './komponente/AddTermin';
 
 
 function App() {
@@ -57,6 +59,7 @@ function App() {
         <Route path='kartoni' element={ <Kartoni/> }/>
         <Route path='kartoni/:id' element={ <Kartoni/> }/> 
         <Route path="/kartoni/:id/pregledi" element={<PreglediKartona />} />
+        <Route path='kartoni/dodaj' element={ <AddKarton/> }/>
         
         <Route path='pregledi' element={ <Pregledi/> }/>
         <Route path='pregledi/:id' element={ <Pregledi/> }/>
@@ -64,6 +67,7 @@ function App() {
        
         <Route path='termini' element={ <Termini/> }/>
         <Route path='termini/:id' element={ <Termini/> }/>
+        <Route path='termini/dodaj' element={ <AddTermin/> }/>
 
         <Route path='/izvestajpregleda/:id' element= {<IzvestajPregleda/> }/>
 

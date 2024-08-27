@@ -45,7 +45,8 @@ class TerminController extends Controller
       
         try {
            //puca kod pravljlenja termina
-        $termin = Termin::create([    'datum'=>$request->datum,
+        $termin = Termin::create([   
+            'datum'=>$request->datum,
             'vreme'=>$request->vreme,
             'lekar_id'=>$request->lekar_id,
             'sestra_id'=>$request->sestra_id,

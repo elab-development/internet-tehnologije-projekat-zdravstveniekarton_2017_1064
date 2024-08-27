@@ -89,11 +89,17 @@ const NavBar = ({token}) => {
               </ul>
             </li>
 
-            <li className="nav-item">
-              <a className="nav-link" href="/kartoni">
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Kartoni
               </a>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><Link className="dropdown-item" to="/kartoni">Lista kartona</Link></li>
+                <li><Link className="dropdown-item" to="/kartoni/dodaj">Dodaj karton</Link></li>
+              </ul>
             </li>
+
+
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Pregledi
@@ -103,10 +109,15 @@ const NavBar = ({token}) => {
                 <li><Link className="dropdown-item" to="/pregledi/dodaj">Dodaj pregled</Link></li>
               </ul>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/termini">
+
+           <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Termini
               </a>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><Link className="dropdown-item" to="/termini">Lista termina</Link></li>
+                <li><Link className="dropdown-item" to="/termini/dodaj">Dodaj termin</Link></li>
+              </ul>
             </li>
             
             
