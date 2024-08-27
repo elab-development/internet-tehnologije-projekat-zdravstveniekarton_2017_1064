@@ -3,16 +3,21 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import _ from 'lodash'
+import IzvestajPregleda from './IzvestajPregleda';
 
 
 const AddPregled = () => {
     
     let navigate = useNavigate();
 
+    
+
     const [termini, setTermini] = useState([]);
     const [selectedTermin, setSelectedTermin] = useState();
     const [kartoni, setKartoni] = useState([]);
     const [selectedKarton, setSelectedKarton] = useState();
+
+    
 
     useEffect(() => {
     axios.get('api/termini').then((res) => {
@@ -46,6 +51,8 @@ const AddPregled = () => {
         termin_id: null,
         karton_id: null
       });
+
+
       
       function handleInput(e) {
         console.log(e) ;
@@ -79,11 +86,12 @@ const AddPregled = () => {
            
           console.log(res.data);
           if(res.data[0] === "Pregled je kreiran uspesno."){
-            navigate('/pregledi')
+             navigate('/pregledi')
+            
           }
           
         }).catch( (e) =>
-           console.log(e));
+           console.log(e));     
       }
   
 

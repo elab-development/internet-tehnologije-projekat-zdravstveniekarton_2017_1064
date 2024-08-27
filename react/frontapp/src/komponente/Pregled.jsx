@@ -15,6 +15,8 @@ function Pregled({pregled}) {
         </div>
       )}
     
+    
+
      <div className="cardPregled-body">
         <h5 className="cardPregled-title">
           Datum i vreme pregleda: {pregled.termin.datum} - {pregled.termin.vreme}
@@ -24,12 +26,17 @@ function Pregled({pregled}) {
             Simptomi: {pregled.simptomi} <br/>
             Dijagnoza: {pregled.dijagnoza} <br/>
             Terapija: {pregled.terapija}
-        </p>       
+        </p> 
+        <a href={`/izvestajpregleda/${pregled.id}`} className="btn btn-secondary">
+            Izvestaj sa pregleda
+          </a>
+
     </div>
     <div className="card-footer text-muted">
     Lekar: {pregled.termin.lekar.ime} <br/>
     Sestra: {pregled.termin.sestra.ime}
     </div>
+    
 </div>
   )
 }

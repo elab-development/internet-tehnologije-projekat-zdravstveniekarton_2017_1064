@@ -16,6 +16,7 @@ import PreglediKartona from './komponente/PreglediKartona';
 import Termini from './komponente/Termini';
 import AddPacijent from './komponente/AddPacijent';
 import AddPregled from './komponente/AddPregled';
+import IzvestajPregleda from './komponente/IzvestajPregleda';
 
 
 function App() {
@@ -64,7 +65,7 @@ function App() {
         <Route path='termini' element={ <Termini/> }/>
         <Route path='termini/:id' element={ <Termini/> }/>
 
-
+        <Route path='/izvestajpregleda/:id' element= {<IzvestajPregleda/> }/>
 
       </Route>
       
