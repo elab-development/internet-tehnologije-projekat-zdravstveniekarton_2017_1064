@@ -1,6 +1,5 @@
 import React from 'react'
-import PreglediKartona from './PreglediKartona'
-import { Link, useLocation } from 'react-router-dom'
+import {  useLocation } from 'react-router-dom'
 
 
  function Karton({karton}) {

@@ -2,11 +2,12 @@ import React from 'react';
 import { useState, useEffect } from 'react'; 
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 
 const AddKarton = () => {
-    
+    const notify= () =>{ }
     let navigate = useNavigate();
 
     const [kartonData, setKartonData] = useState({
@@ -60,12 +61,13 @@ const AddKarton = () => {
                 Authorization: `Bearer ${window.sessionStorage.getItem("auth_token")}`,
               },
         }).then( (res) => {
-
-           
           console.log(res.data);
           if(res.data[0] === 'Karton je uspesno kreiran'){
             navigate('/kartoni')
-          }
+          } else
+            toast.error("Neispravni podaci! Pokušajte ponovo!", {
+              position: "top-center"
+            });
           
         }).catch( (e) =>
            console.log(e));
@@ -93,7 +95,8 @@ const AddKarton = () => {
         </select>
         <br/>
         <br/>
-        <button type="submit">Dodaj karton</button>
+        <button type="submit" onClick={notify}>Dodaj karton</button>
+        <ToastContainer/>
       </form>
     </div>
   );

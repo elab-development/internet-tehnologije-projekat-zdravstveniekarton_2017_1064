@@ -4,10 +4,11 @@ import { useLocation } from 'react-router-dom'
 function Pacijent({pacijent}) {
   const location = useLocation();
   return (
-    <div className="card">
-    <div className="card-body">
-      <h5 className="card-title">{pacijent.ime}</h5>
-      <h6 className="card-subtitle mb-2 text-muted">{pacijent.email}</h6>
+    <div className='pacijentKontejner'>
+      <div className="cardPac">
+    <div className="cardPac-body">
+      <h5 className="cardPac-title">{pacijent.ime}</h5>
+      <h6 className="cardPac-subtitle mb-2 text-muted">{pacijent.email}</h6>
       {location.pathname == "/pacijenti" && (
         <a href={`/pacijenti/${pacijent.id}`} className="btn btn-primary">
         Više informacija
@@ -15,17 +16,18 @@ function Pacijent({pacijent}) {
       )}
 
       {location.pathname != "/pacijenti" && (
-          <div className="card-text">
+          <div className="cardPac-text">
             Datum rodjenja:<br/>{pacijent.datum_rodjenja} <br/>
             Telefon: <br/> {pacijent.telefon} <br/>
             Šifra: {pacijent.id}
           </div>
       )}
-      
-      
-
+  
     </div>
   </div>
+
+    </div>
+    
   )
 }
 

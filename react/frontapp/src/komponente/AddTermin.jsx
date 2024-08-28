@@ -2,11 +2,13 @@ import React from 'react';
 import { useState, useEffect } from 'react'; 
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 
 const AddTermin = () => {
     
+  const notify=() => {}
     let navigate = useNavigate();
 
     const [terminData, setTerminData] = useState({
@@ -75,11 +77,13 @@ const AddTermin = () => {
                 Authorization: `Bearer ${window.sessionStorage.getItem("auth_token")}`,
               },
         }).then( (res) => {
-
-           
           console.log(res.data);
           if(res.data[0] === 'Termin je kreiran uspesno.'){
             navigate('/termini')
+          }else{
+            toast.error("Neispravni podaci! Pokušajte ponovo!", {
+              position: "top-center"
+            });
           }
           
         }).catch( (e) =>
@@ -122,7 +126,8 @@ const AddTermin = () => {
         </select>
         <br/>
         <br/>
-        <button type="submit">Dodaj termin</button>
+        <button type="submit" onClick={notify}>Dodaj termin</button>
+        <ToastContainer/>
       </form>
     </div>
   );

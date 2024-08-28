@@ -46,7 +46,7 @@ const NavBar = ({token}) => {
 
       <nav className="navbar navbar-expand-xl navbar-dark bg-dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">E-karton</a>
+        <a className="navbar-brand" href="/pocetna">E-karton</a>
         <button
           className="navbar-toggler"
           type="button"

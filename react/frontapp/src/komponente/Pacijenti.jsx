@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Pacijent from './Pacijent';
 import { useParams } from 'react-router-dom';
+import slika from '../slike/slika2.jpg'
 
 
 const Pacijenti = () => {
@@ -23,12 +24,13 @@ const Pacijenti = () => {
     }
   } );
   return (
-   
-    <div className='all-osoblje'>
-      {pacijenti == null ? <></> : pacijenti.map( (pacijent) => (
-        <Pacijent pacijent ={pacijent} key={pacijent.id} />
-        ) )}
-    </div>
+    
+    <div className='pacijentKontejner'>
+        {pacijenti == null ? <></> : pacijenti.map( (pacijent) => (
+          <Pacijent pacijent ={pacijent} key={pacijent.id} />
+          ) )}
+      </div>
+    
   )
 }
 

@@ -2,11 +2,12 @@ import React from 'react';
 import { useState } from 'react'; 
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 
 const AddPacijent = () => {
-    
+    const notify= () =>{ }
     let navigate = useNavigate();
 
     const [pacijentData, setPacijentData] = useState({
@@ -48,6 +49,10 @@ const AddPacijent = () => {
           console.log(res.data);
           if(res.data[0] === "Pacijent je kreiran uspesno."){
             navigate('/pacijenti')
+          } else{
+            toast.error("Neispravni podaci! Pokušajte ponovo!", {
+              position: "top-center"
+            });
           }
           
         }).catch( (e) =>
@@ -75,7 +80,8 @@ const AddPacijent = () => {
         <input type="text" name = "telefon"
                     onInput={handleInput} placeholder='1234567'/>
         <br/>
-        <button type="submit">Dodaj pacijenta</button>
+        <button type="submit" onClick={notify} >Dodaj pacijenta</button>
+        <ToastContainer />
       </form>
     </div>
   );

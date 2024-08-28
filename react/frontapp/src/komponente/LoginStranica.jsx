@@ -32,7 +32,7 @@ const LoginStranica = ({addToken}) => {
       if(res.data.success === true){
         window.sessionStorage.setItem("auth_token", res.data.access_token); 
         window.sessionStorage.setItem("user_type", res.data.user_type); 
-        navigate('/');
+        navigate('/pocetna');
       }else{
         console.log("Pokusajte opet")
         toast.error("Neispravni podaci! Pokušajte ponovo!", {

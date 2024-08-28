@@ -3,13 +3,14 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import _ from 'lodash'
+import { toast, ToastContainer } from 'react-toastify';
 
 
 
 const AddPregled = () => {
     
     let navigate = useNavigate();
-
+    const notify= () =>{ }
     
 
     const [termini, setTermini] = useState([]);
@@ -89,7 +90,10 @@ const AddPregled = () => {
           console.log(res.data);
           if(res.data[0] === "Pregled je kreiran uspesno."){
              navigate('/pregledi')
-            
+          }else{
+            toast.error("Neispravni podaci! Pokušajte ponovo!", {
+              position: "top-center"
+            });
           }
           
         }).catch( (e) =>
@@ -141,7 +145,8 @@ const AddPregled = () => {
         </select>
         <br/>
         <br/>
-        <button type="submit">Dodaj Pregled</button>
+        <button type="submit" onClick={notify}>Dodaj Pregled</button>
+        <ToastContainer/>
       </form>
     </div>
   );

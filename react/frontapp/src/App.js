@@ -19,6 +19,7 @@ import AddPregled from './komponente/AddPregled';
 import IzvestajPregleda from './komponente/IzvestajPregleda';
 import AddKarton from './komponente/AddKarton';
 import AddTermin from './komponente/AddTermin';
+import Pocetna from './komponente/Pocetna';
 
 
 function App() {
@@ -51,9 +52,11 @@ function App() {
     <BrowserRouter className="App">
       {loading? (<p>Loading..</p>) : (
         <Routes>
+        
         <Route path='/login' element = { <LoginStranica addToken={addToken}  /> } />  
         <Route path='/register' element = {   <RegisterStranica/> } />
         <Route path='/' element = {<NavBar token={token} />} >
+          < Route path='/pocetna' element={<Pocetna/>} />  
           <Route path='lekari' element = { <Lekari> </Lekari> } /> 
           <Route path='lekari/:id' element = { <Lekari> </Lekari> } /> 
           
