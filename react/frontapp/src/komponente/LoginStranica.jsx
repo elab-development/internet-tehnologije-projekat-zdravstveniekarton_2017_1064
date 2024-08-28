@@ -2,14 +2,18 @@ import React from 'react';
 import { useState } from 'react'; 
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginStranica = ({addToken}) => {
-
+  
   const [userData, setUserData] = useState({
     email: "",
     password: ""
   });
-
+  
+  const notify= () =>{ }
+  
   let navigate = useNavigate();
 
   function handleInput(e) {
@@ -28,9 +32,15 @@ const LoginStranica = ({addToken}) => {
       if(res.data.success === true){
         window.sessionStorage.setItem("auth_token", res.data.access_token); 
         window.sessionStorage.setItem("user_type", res.data.user_type); 
+        navigate('/');
+      }else{
+        console.log("Pokusajte opet")
+        toast.error("Neispravni podaci! Pokušajte ponovo!", {
+          position: "top-center"
+        });
       }
       addToken(res.data.access_token);
-      navigate('/');
+     
     }).catch( (e) =>
        console.log(e));
   }
@@ -72,7 +82,8 @@ const LoginStranica = ({addToken}) => {
                 
                 <button data-mdb-button-init data-mdb-ripple-init
                  className="btn btn-outline-light btn-lg px-5" 
-                 type="submit"> Login </button>
+                 type="submit"  onClick={notify}> Login </button>
+                 <ToastContainer />
 
                 
               </div>

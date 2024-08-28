@@ -8,7 +8,7 @@ function Lekar({lekar}) {
   return (
 
       <div className="card">
-        <img className='card-img-top' src="https:/picsum.photos/200" alt="Slika"  />
+        <img className='card-img-top' src="https://i.pinimg.com/736x/b9/97/a5/b997a530822d0f2c03259070d4590d45.jpg" alt="Slika"  />
         <div className="card-body">
           <h5 className="card-title text-center">{lekar.ime}</h5>
           <h6 className="card-subtitle mb-2 text-muted text-center">{lekar.specijalizacija}</h6>

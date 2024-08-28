@@ -70,7 +70,7 @@ const RegisterStranica = () => {
                   <input type="password" 
                     id="typePasswordX" 
                     className="form-control form-control-lg" 
-                    placeholder='Unesite lozinku.' 
+                    placeholder='Unesite lozinku. Minimum 6 karaktera!' 
                     name= "password"
                     onInput={handleInput} />
                   <label className="form-label" htmlFor="typePasswordX">Lozinka</label>

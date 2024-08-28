@@ -48,9 +48,7 @@
     margin: 10;
 }
   
- .cardTermin{
-  display: inline-flex;
- }
+
 
  .formaAdd {
   max-width: 600px;
@@ -91,7 +89,7 @@
 .formaAdd button[type="submit"] {
   width: 100%;
   height: 40px;
-  background-color: #4CAF50;
+  background-color: rgb(80, 0, 200);
   color: #fff;
   padding: 10px;
   border: none;
@@ -100,7 +98,7 @@
 }
 
 .formaAdd button[type="submit"]:hover {
-  background-color: #3e8e41;
+  background-color:   rgb(83, 0, 238);
 }
 
 .formaAdd textarea{
@@ -127,3 +125,201 @@
   text-align: left;
 }
 
+.cardizvestaj{
+  border-style: solid;
+  border-width: 50;
+  border-color: rgb(83, 0, 238);
+  border-radius: 10px;
+  width: 600px;
+  margin: 15px auto;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.btnIzvestaj{
+  width: 100%;
+  height: 40px;
+  background-color: rgb(80, 0, 200);
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cardPregled {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cardPregled-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.cardPregled-header a {
+  float: right;
+}
+
+.cardPregled-body {
+  padding: 20px;
+}
+
+.cardPregled-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.cardPregled-text {
+  font-size: 16px;
+  color: #666;
+}
+
+.cardPregled-footer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.cardPregled-footer text-muted {
+  color: #999;
+}
+
+.btn-secondary {
+  background-color: rgb(80, 0, 200);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: rgb(83, 0, 238);
+}
+
+
+.cardKarton {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #fff;
+}
+
+.cardKarton-header {
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.cardKarton-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.cardKarton-text {
+  font-size: 16px;
+  color: #666;
+}
+
+.cardKarton-body {
+  padding: 20px;
+}
+
+.btnK {
+  background-color: rgb(80, 0, 200); 
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 20%;
+}
+
+.btn:hover {
+  background-color:rgb(83, 0, 238);
+}
+
+.card-footer {
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+  color: #999;
+}
+
+
+
+/* termin */
+.cardTermin {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px;
+  background-color: #f9f9f9;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.list-group {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.list-group-item {
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+.list-group-item strong {
+  font-weight: bold;
+  color: #333;
+}
+
+.cardTermin ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.cardTermin li {
+  list-style: none;
+}
+
+.cardTermin .list-group-item {
+  background-color: #fff;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.cardTermin .list-group-item:hover {
+  background-color: #f5f5f5;
+}
+
+.cardTermin .list-group-item span {
+  font-size: 16px;
+  color: #666;
+}
+
+.cardTermin .list-group-item strong {
+  font-size: 18px;
+}

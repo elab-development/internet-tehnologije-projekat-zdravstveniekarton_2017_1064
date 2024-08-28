@@ -13,7 +13,7 @@ const NavBar = ({token}) => {
 
   function handleLogout(e) {
     e.preventDefault();
-    console.log("ovde pocinje logout")
+    //console.log("ovde pocinje logout")
     let config = {
       method: "post",
       url: 'api/logout',
@@ -21,7 +21,7 @@ const NavBar = ({token}) => {
          Authorization: "Bearer " + token,
       },
     };
-    console.log("ovde pocinje axios")
+    //console.log("ovde pocinje axios")
     console.log(config)
 
     axios.request(config).then((response) => {
@@ -33,7 +33,7 @@ const NavBar = ({token}) => {
         navigate("/login");
       } else {
         console.error("Logout failed");
-        // Handle the case where the logout fails
+        
       }
       })
       .catch((error) => {
@@ -46,7 +46,7 @@ const NavBar = ({token}) => {
 
       <nav className="navbar navbar-expand-xl navbar-dark bg-dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">E-karton</a>
+        <a className="navbar-brand" href="/">E-karton</a>
         <button
           className="navbar-toggler"
           type="button"
@@ -60,11 +60,11 @@ const NavBar = ({token}) => {
         </button>
         <div className="collapse navbar-collapse show" id="navbarDark">
           <ul className="navbar-nav me-auto mb-2 mb-xl-0">
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="/">
                 Početna
-              </a>
-            </li>
+              </a>  
+            </li> */}
             <li className="nav-item">
               <a className="nav-link" href="/lekari">
                 Lekari
@@ -75,11 +75,7 @@ const NavBar = ({token}) => {
                 Sestre
               </a>
             </li>
-            {/* <li className="nav-item">
-              <a className="nav-link" href="/pacijenti">
-                Pacijenti
-              </a>
-            </li> */}
+            
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Pacijenti
@@ -121,13 +117,13 @@ const NavBar = ({token}) => {
               </ul>
             </li>
             
-            
+            {/*             
             <li className="nav-item">
               <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">
                 Disabled
               </a>
             </li>
-            
+             */}
             {(token == null) ? ( <li className="nav-item">
               <a className="nav-link" href="/login">
                 Login

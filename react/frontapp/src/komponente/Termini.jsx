@@ -17,10 +17,13 @@ const Termini = () => {
           if(res.data.termini == null)
             setTermini([res.data.termin])
           else
-            setTermini(_.sortBy((res.data.termini),['datum', 'vreme'] ));
+          setTermini(_.sortBy(res.data.termini, [
+            (item) => new Date(item.datum.split('.').reverse().join('-')),
+            'vreme'
+          ]));
          
         }).catch( (e) =>
-          console.log(e));;
+        console.log(e));;
       }
     })
     

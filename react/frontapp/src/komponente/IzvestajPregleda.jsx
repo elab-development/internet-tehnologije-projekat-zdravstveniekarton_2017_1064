@@ -58,20 +58,23 @@ const IzvestajPregleda = () => {
        
     }
   return (
-     <div className='izvestaj'>
+     <div className='cardizvestaj'>
         {loading? <p>Učitavanje..</p>: (
             <>
-            <h2>Izveštaj sa pregleda</h2>
-            <button onClick={handlePdf}>Generiši izveštaj</button>
-            <h3>Prikaz informacija</h3>
-            <p className="cardPregled-text">
+            <div className='card-header text-center'> Izveštaj sa pregleda </div>
+            <div className="card-body ">
                 Simptomi: {pregled.simptomi} <br/>
                 Dijagnoza: {pregled.dijagnoza} <br/>
                 Terapija: {pregled.terapija} <br/>
                 Datum i vreme: {pregled.termin.datum} - {pregled.termin.vreme} <br/>
                 Lekar: {pregled.termin.lekar.ime} <br/>
-                Šifra kartona: {pregled.karton.id}
-            </p>  
+                Šifra kartona: {pregled.karton.id}<br/><br/>
+            
+            
+            <button className='btnIzvestaj'  onClick={handlePdf}>Generiši izveštaj</button>
+            </div>
+            
+            
             </>
         )}
         
