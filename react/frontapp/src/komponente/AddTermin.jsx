@@ -22,7 +22,8 @@ const AddTermin = () => {
     useEffect(() => {
     axios.get('api/lekari').then((res) => {
         setLekari(res.data.lekari)
-        });
+        }).catch( (e) =>
+          console.log(e));;
     }, []);
 
     const handleLekarChange = (e) => {
@@ -36,7 +37,8 @@ const AddTermin = () => {
     useEffect(() => {
     axios.get('api/sestre').then((res) => {
         setSestre(res.data.sestre)
-        });
+        }).catch( (e) =>
+          console.log(e));;
     }, []);
 
     const handleSestraChange = (e) => {
@@ -93,6 +95,7 @@ const AddTermin = () => {
         <input type="text" name = "datum"
                     onInput={handleInput} placeholder='31.12.1999.' />
         <br/>
+        <label>Vreme:</label>
         <input type="text" name = "vreme"
                     onInput={handleInput} placeholder='08:54' />
         <br/>
@@ -102,11 +105,13 @@ const AddTermin = () => {
           <option value="" name = "lekar_id">Odaberite lekara</option>
           {lekari.map((lekar) => (
             <option key={lekar.id} value={lekar.id}>
-              {lekar.ime} {lekar.specijalizacija}  
+              {lekar.ime} <></>
+              - {lekar.specijalizacija}  
             </option>
           ))}
         </select>
-        <br/><br/>
+        <br/>
+        <label>Sestra:  </label>
         <select value={selectedSestra} onChange={handleSestraChange}>
           <option value="" name = "sestra_id">Odaberite sestru</option>
           {sestre.map((sestra) => (

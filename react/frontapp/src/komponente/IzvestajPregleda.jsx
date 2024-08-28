@@ -20,9 +20,10 @@ const IzvestajPregleda = () => {
              setPregled(res.data.pregled);
              //console.log(res.data.pregled)
              setLoading(false);
-          });
+          }).catch( (e) =>
+            console.log(e));;
         }
-      });
+      })
 
       console.log(pregled)
         const handlePdf = () =>{

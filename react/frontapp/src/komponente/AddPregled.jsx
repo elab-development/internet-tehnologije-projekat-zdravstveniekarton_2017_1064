@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import _ from 'lodash'
-import IzvestajPregleda from './IzvestajPregleda';
+
 
 
 const AddPregled = () => {
@@ -23,13 +23,15 @@ const AddPregled = () => {
     axios.get('api/termini').then((res) => {
      
       setTermini(_.sortBy((res.data.termini),['datum', 'vreme'] ));
-        });
+        }).catch( (e) =>
+          console.log(e));
     }, []);
     
     useEffect(() => {
         axios.get('api/kartoni').then((res) => {
           setKartoni(res.data.kartoni);
-            });
+            }).catch( (e) =>
+              console.log(e));
         }, []);
     
 
@@ -100,15 +102,18 @@ const AddPregled = () => {
       <h2>Dodaj Pregled</h2>
       <form onSubmit={handleSubmit}>
         <label>Simptomi:</label>
-        <input type="text" name = "simptomi"
+        <textarea type="text" name = "simptomi"
                     onInput={handleInput} />
         <br/>
         <label>Dijagnoza:</label>
         <input type="text" name = "dijagnoza"
                     onInput={handleInput} />
+
+          <a href='https://mediately.co/rs/icd'  target="_blank"> Pretrazi diganoze</a>
+        <br/>
         <br/>
         <label>Terapija:</label>
-        <input type="text" name = "terapija"
+        <textarea  type="text" name = "terapija"
                     onInput={handleInput} />
         <br/>
         <label>Termin:</label>
@@ -116,18 +121,21 @@ const AddPregled = () => {
           <option value="" name = "termin_id">Izaberite termin</option>
           {termini.map((termin) => (
             <option key={termin.id} value={termin.id}>
-              {termin.datum} {termin.vreme}
+              Datum: {termin.datum} <>  </>
+              Vreme: {termin.vreme}   <>    </>
+              Lekar: {termin.lekar.ime}
             </option>
           ))}
-        </select>
-        <br/>
+        </select> 
         <br/>
         <label>Karton:</label>
         <select value={selectedKarton} onChange={handleKartonChange}>
           <option value="">Izaberite karton</option>
           {kartoni.map((karton) => (
             <option key={karton.id} value={karton.id}>
-              {karton.pacijent.ime} {karton.pacijent.datum_rodjenja} {karton.pacijent.email}
+              Ime: {karton.pacijent.ime} <></>
+              Datum rodjenja: {karton.pacijent.datum_rodjenja} <></>
+              {karton.pacijent.email} 
             </option>
           ))}
         </select>

@@ -18,7 +18,8 @@ const Pacijenti = () => {
           setPacijenti([res.data.pacijent])
         else
           setPacijenti(res.data.pacijenti );
-      });
+      }).catch( (e) =>
+        console.log(e));
     }
   } );
   return (

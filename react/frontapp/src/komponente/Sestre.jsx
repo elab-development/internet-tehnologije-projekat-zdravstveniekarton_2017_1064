@@ -21,7 +21,8 @@ const Sestre = () => {
           else
             setSestre(res.data.sestre );
         
-      });
+      }).catch( (e) =>
+        console.log(e));;
     }
   } );
   return (

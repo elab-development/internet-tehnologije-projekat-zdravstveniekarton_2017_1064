@@ -20,7 +20,8 @@ const Lekari = () => {
         }
         else
           setLekari(res.data.lekari );
-      });
+      }).catch( (e) =>
+        console.log(e));
     }
    
   } );

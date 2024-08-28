@@ -19,9 +19,10 @@ const Termini = () => {
           else
             setTermini(_.sortBy((res.data.termini),['datum', 'vreme'] ));
          
-        });
+        }).catch( (e) =>
+          console.log(e));;
       }
-    } );
+    })
     
     return (
      

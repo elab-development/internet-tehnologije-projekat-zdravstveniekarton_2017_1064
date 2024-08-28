@@ -17,7 +17,8 @@ const Kartoni = () => {
             setKartoni([res.data.karton])
           else
             setKartoni(res.data.kartoni );
-        });
+        }).catch( (e) =>
+          console.log(e));
       }
     } );
     return (

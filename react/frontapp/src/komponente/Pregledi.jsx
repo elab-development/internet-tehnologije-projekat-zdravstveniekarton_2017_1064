@@ -17,7 +17,8 @@ const Pregledi = () => {
             setPregledi([res.data.pregled]);
           else
             setPregledi(res.data.pregledi );
-        });
+        }).catch( (e) =>
+          console.log(e));
       }
     } );
     return (

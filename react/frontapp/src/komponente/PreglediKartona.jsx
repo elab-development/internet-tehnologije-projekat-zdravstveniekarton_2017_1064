@@ -17,7 +17,8 @@ const PreglediKartona = () => {
         axios.get(`api/kartoni/${id}/pregledi`).then((res) => {
           console.log(res.data);
           setPregledi(res.data.pregledi );
-        });
+        }).catch( (e) =>
+          console.log(e));;
       }
     },[pregledi] );
     return (

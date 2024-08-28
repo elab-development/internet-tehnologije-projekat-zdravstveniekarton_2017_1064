@@ -20,7 +20,8 @@ const AddKarton = () => {
     useEffect(() => {
     axios.get('api/pacijenti').then((res) => {
         setPacijenti(res.data.pacijenti)
-        });
+        }).catch( (e) =>
+          console.log(e));;
     }, []);
 
     const handlePacijentChange = (e) => {
@@ -76,7 +77,7 @@ const AddKarton = () => {
       <h2>Dodaj karton</h2>
       <form onSubmit={handleSubmit}>
         <label>Alergije:</label>
-        <input type="text" name = "alergije"
+        <textarea type="text" name = "alergije"
                     onInput={handleInput} />
         <br/>
         <label>Pacijent:</label>
@@ -84,7 +85,9 @@ const AddKarton = () => {
           <option value="" name = "pacijent_id">Odaberite pacijenta</option>
           {pacijenti.map((pacijent) => (
             <option key={pacijent.id} value={pacijent.id}>
-              {pacijent.ime} {pacijent.datum_rodjenja} {pacijent.email} 
+              Ime: {pacijent.ime} <></>
+              Datum rodjenja:   {pacijent.datum_rodjenja}  <></>
+              {pacijent.email} 
             </option>
           ))}
         </select>
