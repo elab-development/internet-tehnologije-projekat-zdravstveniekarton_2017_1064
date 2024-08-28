@@ -4,10 +4,11 @@ import React from 'react'
 import  {Link} from "react-router-dom";
 import axios from 'axios';
 import { Outlet } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
+import { useState } from 'react';
 
 const NavBar = ({token}) => {
-  
+ 
   let navigate = useNavigate();
 
   function handleLogout(e) {
@@ -25,7 +26,7 @@ const NavBar = ({token}) => {
 
     axios.request(config).then((response) => {
       console.log(response)
-      if (response.status == 200) {
+      if (response.status === 200) {
         console.log(JSON.stringify(response.data));
         window.sessionStorage.removeItem("auth_token");
         window.sessionStorage.removeItem("user_type");

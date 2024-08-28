@@ -28,55 +28,63 @@ function App() {
   //   setToken(auth_token);  
   //   console.log("evo ga token i app.jsa",  token)
   // }
-
-  const [token, setToken] = useState();
-
-  function addToken(auth_token) {
-    setToken(auth_token);
-  }
-
-  useEffect(() => {
-    console.log("Token updated:", token);
-  }, [token]);
-
   
-  return (
+    const [loading, setLoading] = useState(true);
+    const [token, setToken] = useState(null);
+
+    useEffect(() => {
+      const storedToken = window.sessionStorage.getItem('auth_token');
+      if (storedToken) {
+        setToken(storedToken);
+        console.log("Token updated:", storedToken);
+      }
+      setLoading(false);
+    }, [token]);
+
+
+    function addToken(auth_token) {
+      setToken(auth_token);
+    }
+  
+  
+  return ( 
     <BrowserRouter className="App">
-     <Routes>
-      <Route path='/login' element = { <LoginStranica addToken={addToken}  /> } />  
-      <Route path='/register' element = {   <RegisterStranica/> } />
-      <Route path='/' element = {<NavBar token={token} />} >
-        <Route path='lekari' element = { <Lekari> </Lekari> } /> 
-        <Route path='lekari/:id' element = { <Lekari> </Lekari> } /> 
+      {loading? (<p>Loading..</p>) : (
+        <Routes>
+        <Route path='/login' element = { <LoginStranica addToken={addToken}  /> } />  
+        <Route path='/register' element = {   <RegisterStranica/> } />
+        <Route path='/' element = {<NavBar token={token} />} >
+          <Route path='lekari' element = { <Lekari> </Lekari> } /> 
+          <Route path='lekari/:id' element = { <Lekari> </Lekari> } /> 
+          
+          <Route path='sestre' element={ <Sestre> </Sestre> }/>
+          <Route path='sestre/:id' element={ <Sestre> </Sestre> }/>
+          
+          <Route path='pacijenti' element={ <Pacijenti/> }/>
+          <Route path='pacijenti/:id' element={ <Pacijenti/> }/>
+          <Route path='pacijenti/dodaj' element={ <AddPacijent/> }/>
+          
+          <Route path='kartoni' element={ <Kartoni/> }/>
+          <Route path='kartoni/:id' element={ <Kartoni/> }/> 
+          <Route path="/kartoni/:id/pregledi" element={<PreglediKartona />} />
+          <Route path='kartoni/dodaj' element={ <AddKarton/> }/>
+          
+          <Route path='pregledi' element={ <Pregledi/> }/>
+          <Route path='pregledi/:id' element={ <Pregledi/> }/>
+          <Route path='/pregledi/dodaj' element={<AddPregled />}/>
+         
+          <Route path='termini' element={ <Termini/> }/>
+          <Route path='termini/:id' element={ <Termini/> }/>
+          <Route path='termini/dodaj' element={ <AddTermin/> }/>
+  
+          <Route path='/izvestajpregleda/:id' element= {<IzvestajPregleda/> }/>
+  
+        </Route>
         
-        <Route path='sestre' element={ <Sestre> </Sestre> }/>
-        <Route path='sestre/:id' element={ <Sestre> </Sestre> }/>
-        
-        <Route path='pacijenti' element={ <Pacijenti/> }/>
-        <Route path='pacijenti/:id' element={ <Pacijenti/> }/>
-        <Route path='pacijenti/dodaj' element={ <AddPacijent/> }/>
-        
-        <Route path='kartoni' element={ <Kartoni/> }/>
-        <Route path='kartoni/:id' element={ <Kartoni/> }/> 
-        <Route path="/kartoni/:id/pregledi" element={<PreglediKartona />} />
-        <Route path='kartoni/dodaj' element={ <AddKarton/> }/>
-        
-        <Route path='pregledi' element={ <Pregledi/> }/>
-        <Route path='pregledi/:id' element={ <Pregledi/> }/>
-        <Route path='/pregledi/dodaj' element={<AddPregled />}/>
-       
-        <Route path='termini' element={ <Termini/> }/>
-        <Route path='termini/:id' element={ <Termini/> }/>
-        <Route path='termini/dodaj' element={ <AddTermin/> }/>
+       </Routes>
 
-        <Route path='/izvestajpregleda/:id' element= {<IzvestajPregleda/> }/>
-
-      </Route>
-      
-     </Routes>
-     
-    
-
+      )}
+        
     </BrowserRouter>
   );
 }
