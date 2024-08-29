@@ -2,8 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const RegisterStranica = () => {
+  const notify= () =>{ }
+
     const [userData, setUserData] = useState({
         name:"",
         email: "",
@@ -23,10 +27,15 @@ const RegisterStranica = () => {
 
       function handleRegister(e) {
         e.preventDefault();  
-    
         axios.post("api/register", userData).then( (res) => {
-          console.log(res.data);
+          if(res.data.success === true) {
+            console.log(res.data);
           navigate('/login');
+          }else 
+            toast.error("Neispravni podaci! Pokušajte ponovo!", {
+              position: "top-center"
+            });
+         
         }).catch( (e) =>
            console.log(e));
       }
@@ -92,7 +101,8 @@ const RegisterStranica = () => {
                 
                 <button data-mdb-button-init data-mdb-ripple-init
                  className="btn btn-outline-light btn-lg px-5" 
-                 type="submit"> Register </button>
+                 type="submit" onClick={notify}> Register </button>
+                 <ToastContainer/>
             
               </div>
             </form>
