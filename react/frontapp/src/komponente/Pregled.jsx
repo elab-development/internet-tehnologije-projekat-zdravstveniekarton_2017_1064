@@ -39,7 +39,7 @@ function Pregled({pregled}) {
 
     </div>
     <div className="card-footer text-muted">
-    Lekar: {pregled.termin.lekar.ime} <br/>
+    Lekar: {pregled.termin.lekar.ime} - {pregled.termin.lekar.specijalizacija} <br/>
     Sestra: {pregled.termin.sestra.ime}
     </div>
     

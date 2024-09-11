@@ -326,21 +326,23 @@
 }
 
 /* pacijent */
+.pacijentKontejner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pacijentKontejner > * {
+  margin: 20px;
+}
+
+/* Card styles */
+
 .cardPac {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px ;
+  text-align: center;
+  width: 300px;
+  margin: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: inline-flex;
-  flex-direction: column;
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 300px;
-  grid-column: 1 / -1;
-  
- 
 }
 
 .cardPac-body {
@@ -348,32 +350,95 @@
 }
 
 .cardPac-title {
-  font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .cardPac-subtitle {
-  font-size: 18px;
+  font-size: 16px;
   color: #666;
-  margin-bottom: 20px;
 }
 
 .cardPac-text {
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 20px;
+  font-size: 18px;
+  color: #666;
 }
 
-.cardPac-text p {
+.cardPac-text br {
   margin-bottom: 10px;
 }
 
-.pacijentKontejner{
-  display: flex;
-  flex-wrap: wrap;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 10px;
+/* Button styles */
 
+.btn-primary {
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #23527c;
+}
+
+
+
+.sort-container {
+  position: relative;
+  top: 10px;
+  right: 20px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.sort-container label {
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.sort-container select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 150px;
+}
+
+
+.search-container {
+  position: relative;
+  top: 10px;
+  right: 20px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-bottom: 20px;
+}
+
+.search-container input[type="search"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.search-container button[type="button"] {
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.search-container button[type="button"]:hover {
+  background-color: #23527c;
 }
