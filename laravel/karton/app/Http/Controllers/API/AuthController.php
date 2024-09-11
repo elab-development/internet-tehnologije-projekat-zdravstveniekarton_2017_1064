@@ -25,7 +25,7 @@ class AuthController extends Controller
         ]);
 
         if($validator->fails())
-            return response()->json($validator->errors());
+            return response()->json(['success' => false, $validator->errors()]);
 
         $user= User::create([
             'name'=>$request->name,
@@ -37,7 +37,7 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json(['data'=>$user, 'access_token'=>$token, 'token_type'=>'Bearer']);
+        return response()->json(['data'=>$user, 'access_token'=>$token, 'token_type'=>'Bearer', 'success' => true]);
 
     }
 

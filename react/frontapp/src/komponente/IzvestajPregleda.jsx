@@ -13,6 +13,8 @@ const IzvestajPregleda = () => {
     const [loading, setLoading] = useState(true);
     const [pregled, setPregled] = useState() ;
 
+    
+
     useEffect( () => {
         //console.log(pregled)
         if(pregled == null ){

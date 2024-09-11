@@ -28,6 +28,16 @@ const Lekari = () => {
     }
   }, [currentPage] );
 
+
+  if( window.sessionStorage.getItem("user_type") == null) {
+    return(
+        <div className='text-center'>
+            <h3>Niste ulogovani?</h3>
+            <a href="/login" 
+            className="text-black-50 fw-bold"><h3>Ulogujte se</h3></a>
+        </div>
+    )
+}
   return (
     <div>
       <nav aria-label="Page navigation">

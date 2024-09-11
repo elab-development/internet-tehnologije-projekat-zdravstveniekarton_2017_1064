@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 const Termini = () => {
     const [termini, setTermini ] = useState() ;
     const {id} =useParams();
+
     
     //ako se nesto izmeni u komponenti (da se ucita samo jednom)
     useEffect( () => {
@@ -27,6 +28,15 @@ const Termini = () => {
       }
     })
     
+    if( window.sessionStorage.getItem("user_type") == null) {
+      return(
+          <div className='text-center'>
+              <h3>Niste ulogovani?</h3>
+              <a href="/login" 
+              className="text-black-50 fw-bold"><h3>Ulogujte se</h3></a>
+          </div>
+      )
+  }
     return (
      
       <div className='termini'>

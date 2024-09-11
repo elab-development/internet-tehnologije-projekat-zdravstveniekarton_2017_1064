@@ -4,6 +4,7 @@ import {  useLocation } from 'react-router-dom'
 
  function Karton({karton}) {
   const location = useLocation();  
+  
   return (
     <div className="cardKarton">
         <div className="cardKarton-header">

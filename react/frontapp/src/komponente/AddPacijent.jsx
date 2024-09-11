@@ -24,14 +24,14 @@ const AddPacijent = () => {
         //console.log(newPacijentData);
         setPacijentData(newPacijentData);
       }
-      if(window.sessionStorage.getItem("user_type") === 'pacijent' || 
+      if(window.sessionStorage.getItem("user_type") === 'lekar' || 
       window.sessionStorage.getItem("user_type") == null) {
           return(
-              <div>
-                  Neautorizovan pristup. Mogu pristupiti samo lekari i sestre. <br/>
-                  Niste ulogovani?
+              <div className='text-center'>
+                  <h3>Neautorizovan pristup. Mogu pristupiti samo sestre.</h3>
+                  <h3>Niste ulogovani?</h3>
                   <a href="/login" 
-                  className="text-black-50 fw-bold">Ulogujte se</a>
+                  className="text-black-50 fw-bold"><h3>Ulogujte se</h3></a>
               </div>
           )
       }

@@ -94,7 +94,7 @@ const RegisterStranica = () => {
                     <option value="">Izaberite tip korisnika</option>
                     <option value="lekar">Lekar</option>
                     <option value="sestra">Sestra</option>
-                    <option value="pacijent">Pacijent</option>
+                    {/* <option value="pacijent">Pacijent</option> */}
                 </select>
                 <label className="form-label" htmlFor="typeUserTypeX">Tip korisnika</label>
                 </div>
